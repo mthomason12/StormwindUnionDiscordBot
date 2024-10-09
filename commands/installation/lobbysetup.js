@@ -1,4 +1,4 @@
-const { SlashCommandBuilder, ActionRowBuilder, ButtonBuilder, ButtonStyle, StringSelectMenuOptionBuilder } = require('discord.js');
+const { SlashCommandBuilder, ActionRowBuilder, ButtonBuilder, ButtonStyle, EmbedBuilder } = require('discord.js');
 const config = require('../../config.js');
 
 module.exports = {
@@ -27,7 +27,15 @@ module.exports = {
 		const lobbyActionRow = new ActionRowBuilder().addComponents(applyButton, guestButton, rpButton, pveButton);
 
         const channel = interaction.member.client.channels.cache.get(config.channels.lobby);				
-        channel.send({content: "Welcome to the Stormwind Union Discord Server. Please select an option below."});
+        channel.send({content: "Welcome to the Stormwind Union Discord Server.\n"
+			+"Please select an option below."});
+		const websiteEmbed = new EmbedBuilder()
+			.setTitle("Check out our website")
+			.setURL("https://stormwindunion.shivtr.com/");
+		const handbookEmbed = new EmbedBuilder()
+			.setTitle("Read our Handbook")
+			.setURL("https://stormwindunion.shivtr.com/pages/handbook");
+		channel.send({embeds:[websiteEmbed, handbookEmbed]});
 		channel.send({components:[lobbyActionRow]});
 	},
 };
