@@ -37,7 +37,7 @@ for (const file of eventFiles) {
 	}
 }
 
-configJSON = JSON.stringify(config);
-console.log(`${configJSON}`);
+//configJSON = JSON.stringify(config);
+//console.log(`${configJSON}`);
 
 client.login(config.token);
