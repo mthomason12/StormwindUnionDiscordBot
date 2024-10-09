@@ -37,5 +37,6 @@ module.exports = {
 			.setURL("https://stormwindunion.shivtr.com/pages/handbook");
 		channel.send({embeds:[websiteEmbed, handbookEmbed]});
 		channel.send({components:[lobbyActionRow]});
+		interaction.reply({content:"Lobby messages sent."})
 	},
 };
