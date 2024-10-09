@@ -26,17 +26,19 @@ module.exports = {
 
 		const lobbyActionRow = new ActionRowBuilder().addComponents(applyButton, guestButton, rpButton, pveButton);
 
-        const channel = interaction.member.client.channels.cache.get(config.channels.lobby);				
-        channel.send({content: "Welcome to the Stormwind Union Discord Server.\n"
-			+"Please select an option below."});
+        const channel = interaction.member.client.channels.cache.get(config.channels.lobby);	
+		
 		const websiteEmbed = new EmbedBuilder()
 			.setTitle("Check out our website")
 			.setURL("https://stormwindunion.shivtr.com/");
 		const handbookEmbed = new EmbedBuilder()
 			.setTitle("Read our Handbook")
 			.setURL("https://stormwindunion.shivtr.com/pages/handbook");
-		channel.send({embeds:[websiteEmbed, handbookEmbed]});
-		channel.send({components:[lobbyActionRow]});
+
+        channel.send({content: "\nWelcome to the Stormwind Union Discord Server.\n"
+			+"Please select an option below.",
+			embeds:[websiteEmbed, handbookEmbed],
+			components:[lobbyActionRow]});
 		interaction.reply({content:"Lobby messages sent."})
 	},
 };
