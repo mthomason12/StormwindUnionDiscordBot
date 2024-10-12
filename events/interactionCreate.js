@@ -1,6 +1,7 @@
 const { Events } = require('discord.js');
 const util = require('util');
 const { ActionRowBuilder, StringSelectMenuBuilder, StringSelectMenuOptionBuilder, EmbedBuilder, ModalBuilder, TextInputBuilder, TextInputStyle, hyperlink } = require('discord.js');
+const config = require('../config.js');
 
 module.exports = {
 	name: Events.InteractionCreate,
@@ -50,9 +51,31 @@ module.exports = {
 			}				
 		}
 
+		if (interaction.isButton())
+		{
+			console.log(`Got a button for ${interaction.customId}`);
+			if (interaction.customId === 'lobbyGuildApplication')
+			{
+				beginGuildApplication(interaction);
+			}
+			if (interaction.customId === 'lobbyGuestApplication')
+			{
+				channelApplication(interaction, 'Guest');
+			}
+			if (interaction.customId === 'lobbyRPApplication')
+			{
+				channelApplication(interaction, 'RP');
+			}
+			if (interaction.customId === 'lobbyPVEApplication')
+			{
+				channelApplication(interaction, 'PVE');
+			}				
+		}
+
 		return;
 	},
 };
+
 
 async function beginGuildApplication(interaction)
 {
@@ -99,7 +122,10 @@ async function beginGuildApplication(interaction)
 
 	const serverActionRow = new ActionRowBuilder().addComponents(serverInput);
 
-	await interaction.reply({components:[serverActionRow]})	
+	await interaction.reply({
+		components:[serverActionRow],
+		ephemeral: true
+	})	
 }
 
 async function serverSelect(interaction)
@@ -120,7 +146,7 @@ async function serverSelect(interaction)
 	const charDisplayNameInput = new TextInputBuilder()
 		.setCustomId('charDisplayNameInput')
 		// The label is the prompt the user sees for this input
-		.setLabel("Character Name (full, in character name)")
+		.setLabel("Character Name (full, in-character name)")
 		// Short means only a single line of text
 		.setStyle(TextInputStyle.Short);	
 		
@@ -176,7 +202,7 @@ async function guildApplication(interaction)
 		)
 		.setTimestamp();
 
-	const channel = interaction.member.client.channels.cache.get('1283877277649731707');				
+	const channel = interaction.member.client.channels.cache.get(config.channels.applications);				
 	channel.send({embeds:[applicationEmbed]});
 
 	/*var content = `<@${id}> has submitted an application for ${charNameInput}-${serverNameInput}`;
@@ -185,9 +211,25 @@ async function guildApplication(interaction)
 	channel.send(content);*/
 
 	await submitted.reply({
-		content: "Thank you for your application. Please wait here for a reply."
+		content: "Thank you for your application. Please wait here for a reply.",
+		ephemeral: true
 	});	
 }
+
+async function channelApplication(interaction, channeltype)
+{
+	const submitted = interaction;	
+	const id = submitted.member.id;
+	const channel = interaction.member.client.channels.cache.get(config.channels.applications);				
+
+	channel.send({content:`<@${id}> has requested access to ${channeltype} channels`});
+
+	await submitted.reply({
+		content: "Thank you for your request. It may take a couple of days for an admin to process, please be patient.",
+		ephemeral: true
+	});	
+}
+
 
 function serverURL(server)
 {
