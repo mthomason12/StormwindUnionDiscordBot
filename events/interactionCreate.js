@@ -7,6 +7,7 @@ module.exports = {
 	name: Events.InteractionCreate,
 	async execute(interaction) {
 
+		//Watch for slash commands
 		if (interaction.isChatInputCommand())
 		{
 			const command = interaction.client.commands.get(interaction.commandName);
@@ -28,6 +29,7 @@ module.exports = {
 			}
 		}
 
+		// Watch for String Select Menus
 		if (interaction.isStringSelectMenu())
 		{
 			console.log(`Got a string select menu:`);
@@ -42,6 +44,7 @@ module.exports = {
 			}
 		}
 
+		// Watch for Modals
 		if (interaction.isModalSubmit())
 		{
 			console.log(`Got a modal for ${interaction.customId}`);			
@@ -51,6 +54,7 @@ module.exports = {
 			}				
 		}
 
+		// Watch for Buttons
 		if (interaction.isButton())
 		{
 			console.log(`Got a button for ${interaction.customId}`);
@@ -79,7 +83,9 @@ module.exports = {
 
 async function beginGuildApplication(interaction)
 {
-	console.log('Reason selected - apply to guild')
+	console.log('Reason selected - apply to guild');
+
+	//Discord has a limit on options in a list, so we're only listing the most popular RP servers 
 	const serverList=['Argent Dawn',
 					  'Blackwater Raiders',
 					  'Cenarion Circle',
@@ -101,15 +107,6 @@ async function beginGuildApplication(interaction)
 	const serverInput = new StringSelectMenuBuilder()
 		.setCustomId('serverInput')
 		.setPlaceholder("Which server is your character on?");
-		/*
-		.addOptions(
-			new StringSelectMenuOptionBuilder()
-				.setLabel('Cenarion Circle')
-				.setValue('cenarion-circle'),
-			new StringSelectMenuOptionBuilder()
-				.setLabel('Sisters of Elune')
-				.setValue('sisters-of-elune'),	
-		);*/
 
 	for (server of serverList)
 	{
