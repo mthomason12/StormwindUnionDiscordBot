@@ -22,17 +22,26 @@ module.exports = {
         const pveButton= new ButtonBuilder()
             .setCustomId('lobbyPVEApplication')
 			.setLabel('Request Access to PVE channels')
-			.setStyle(ButtonStyle.Primary);              		
+			.setStyle(ButtonStyle.Primary);   
+			
+		const websiteButton = new ButtonBuilder()
+			.setLabel('Our Website')
+			.setURL('https://stormwindunion.shivtr.com')
+			.setStyle(ButtonStyle.Link);
 
+		const handbookButton = new ButtonBuilder()
+			.setLabel(`Officer's Handbook`)
+			.setURL('https://stormwindunion.shivtr.com/pages/handbook')
+			.setStyle(ButtonStyle.Link);
+			
+		const linksActionRow = new ActionRowBuilder().addComponents(websiteButton, handbookButton);
 		const lobbyActionRow = new ActionRowBuilder().addComponents(applyButton, guestButton, rpButton, pveButton);
 
         const channel = interaction.member.client.channels.cache.get(config.channels.lobby);	
 
-        channel.send({content: "\nWelcome to the Stormwind Union Discord Server.\n\n"
-			+"[Check out our Website](<https://stormwindunion.shivtr.com>)\n"
-			+"[Read our Handbook](<https://stormwindunion.shivtr.com/pages/handbook>)\n\n"
-			+"Please select an option below.\n",
-			components:[lobbyActionRow]});
+        channel.send({content: "_ _\nWelcome to the Stormwind Union Discord Server.\n\n"
+			+"Please select an option below, and check out the links for our website and Officer's Handbook\n_ _\n",
+			components:[linksActionRow,lobbyActionRow]});
 		interaction.reply({content:"Lobby messages sent."});
 	},
 };
