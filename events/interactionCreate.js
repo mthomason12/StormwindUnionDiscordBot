@@ -183,7 +183,7 @@ async function guildApplication(interaction)
 {
 	const submitted = interaction;
 	const charNameInput = submitted.fields.getTextInputValue('charNameInput');
-	const serverNameInput = submitted.fields.getTextInputValue('serverNameInput');
+	const serverNameInput = submitted.fields.getTextInputValue('serverNameInput').replace(' ','-').toLowerCase();
 	const displayNameInput = submitted.fields.getTextInputValue('charDisplayNameInput');			
 	const letterInput = submitted.fields.getTextInputValue('letterInput');
 	const url = `https://worldofwarcraft.blizzard.com/en-us/character/us/${serverNameInput}/${charNameInput}`
@@ -211,7 +211,7 @@ async function guildApplication(interaction)
 	channel.send(content);*/
 
 	await submitted.reply({
-		content: "Thank you for your application. Please wait here for a reply.",
+		content: "Thank you for your application. Please wait here for a reply - it may take a few days.",
 		ephemeral: true
 	});	
 }
