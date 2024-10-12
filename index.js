@@ -1,3 +1,5 @@
+// Main bot code
+
 const fs = require('node:fs');
 const path = require('node:path');
 const { Client, Collection, GatewayIntentBits } = require('discord.js');
@@ -37,7 +39,5 @@ for (const file of eventFiles) {
 	}
 }
 
-//configJSON = JSON.stringify(config);
-//console.log(`${configJSON}`);
 
 client.login(config.token);

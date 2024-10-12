@@ -1,3 +1,5 @@
+// Run to deploy commands to Discord
+
 const { REST, Routes } = require('discord.js');
 const { clientId, token } = require('./config/token.json');
 const fs = require('node:fs');

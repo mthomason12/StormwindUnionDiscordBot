@@ -1,3 +1,5 @@
+//Respond to interaction events
+
 const { Events } = require('discord.js');
 const util = require('util');
 const { ActionRowBuilder, StringSelectMenuBuilder, StringSelectMenuOptionBuilder, EmbedBuilder, ModalBuilder, TextInputBuilder, TextInputStyle, hyperlink } = require('discord.js');
