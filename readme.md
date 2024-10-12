@@ -42,7 +42,17 @@ The bot-commands channel should be restricted to server admins
 
 The applications channel should be restricted to those staff who need to see user requests and applications
 
-### Commands
+# Run the Bot
+
+Note that this bot is designed to run under a process manager of some kind, for example [PM2](https://pm2.keymetrics.io/).
+
+```pm2 start index.js```
+
+For testing, you can use
+
+```node index.js```
+
+## Commands
 
 /apply - deprecated
 /testapply - deprecated
