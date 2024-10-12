@@ -1,5 +1,9 @@
 const { SlashCommandBuilder, ActionRowBuilder, Events, StringSelectMenuBuilder, StringSelectMenuOptionBuilder, EmbedBuilder, ModalBuilder, TextInputBuilder, TextInputStyle, hyperlink, GuildApplicationCommandManager } = require('discord.js');
 
+// Used for testing new application code while keeping the existing /apply command active 
+
+// This command is now deprecated, use a seperate test instance of the code instead
+
 module.exports = {
 	data: new SlashCommandBuilder()
 		.setName('testapply')

@@ -1,5 +1,7 @@
 const { SlashCommandBuilder, ActionRowBuilder, Events, StringSelectMenuBuilder, StringSelectMenuOptionBuilder, EmbedBuilder, ModalBuilder, TextInputBuilder, TextInputStyle, hyperlink } = require('discord.js');
 
+// This command is deprecated, users will now use buttons from the lobby 
+
 module.exports = {
 	data: new SlashCommandBuilder()
 		.setName('apply')
