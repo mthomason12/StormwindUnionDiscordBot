@@ -42,6 +42,10 @@ The bot-commands channel should be restricted to server admins
 
 The applications channel should be restricted to those staff who need to see user requests and applications
 
+Ensure there are groups for Members, Guests, PVE Guests, and RP Guests
+
+As the Discord invite code will now be public, the only channel new users should be able to see is the lobby channel, ensuring they cannot post anywhere until they've been approved by a staff member.
+
 # Run the Bot
 
 Note that this bot is designed to run under a process manager of some kind, for example [PM2](https://pm2.keymetrics.io/).
