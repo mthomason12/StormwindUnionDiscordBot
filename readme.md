@@ -17,6 +17,10 @@ Scopes
 The Bot's Client ID is it's Application ID, found under "General Information" on its application page
 The Token is obtained from the "Bot" section on its application page
 
+The bot also needs a couple of privileged gateway intents (configured under "Bot")
+- Presence Intent
+- Server Members Intent
+
 ### Config Files
 
 Use the .example files in /config to create a channels.json and token.json in that directory.
