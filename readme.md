@@ -14,6 +14,8 @@ Scopes
 - applications.commands
 - bot
 
+The Bot's Client ID is it's Application ID, found under "General Information" on its application page
+The Token is obtained from the "Bot" section on its application page
 
 ### Config Files
 
@@ -35,7 +37,7 @@ There's probably ways to do it with less permissions but that requires effort :P
 
 The lobby channel (set in channels.json) should not allow any users to post to it.  It's designed to hold a single message from the bot with the option buttons displayed to new users.
 
-The command /lobbysetup should be restricted to a bot-commands channel
+The command /lobbysetup should be restricted to a bot-commands channel.  Restrict that channel to users who can control the bot.
 
 The bot-commands channel should be restricted to server admins
 
@@ -59,7 +61,7 @@ For testing, you can use
 
 /lobbysetup - sends a message to the Lobby channel (configured in channels.json) welcoming new users.
 
-The suggested method to restrict access to commands is to configure Discord to only allow those commands from specific channels, and restrict access to those channels to those users who you want to use the command.
+
 
 
 
