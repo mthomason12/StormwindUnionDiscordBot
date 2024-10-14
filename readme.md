@@ -10,8 +10,6 @@ This bot is designed to run on a single server at a time.  Multiple servers requ
 
 Create a Discord Application for each bot instance at https://discord.com/developers/applications  
 
-This should be set up as a *user installation*, not *guild installation*
-
 Scopes
 - applications.commands
 
