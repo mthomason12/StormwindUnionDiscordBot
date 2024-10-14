@@ -12,6 +12,7 @@ Create a Discord Application for each bot instance at https://discord.com/develo
 
 Scopes
 - applications.commands
+- bot
 
 
 ### Config Files
