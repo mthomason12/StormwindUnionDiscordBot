@@ -56,9 +56,9 @@ For testing, you can use
 
 ## Commands
 
-/apply - deprecated
-/testapply - deprecated
 /lobbysetup - sends a message to the Lobby channel (configured in channels.json) welcoming new users.
+
+The suggested method to restrict access to commands is to configure Discord to only allow those commands from specific channels, and restrict access to those channels to those users who you want to use the command.
 
 
 
